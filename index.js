@@ -171,7 +171,7 @@ function matchUserTemps(temperaments) {
 					matchingBreeds = findBreedsWithTemperaments(temperaments, data);
 					saveData = data;
 					
-					if (matchingBreeds == null) {
+					if (matchingBreeds.length===0) {
 						// TODO display modal that says no matches
 						console.log('matchingBreeds is null in MatchUsrTmps');
 						return null;
