@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
@@ -15,18 +16,22 @@
       <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-xl-9">
           <h1>Barker</h1>
+          <hr>
         </div>
       </div>
     </section>
     <section class="container my-5">
       <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-xl-9">
+          <h5>Application Instructions:</h5>
+          <hr>
           <p>
-            1111111111111111111Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat
-            perspiciatis, debitis a perferendis error quaerat, nulla
-            exercitationem minus, quam libero in ab obcaecati praesentium hic
-            ipsum possimus voluptate modi eius?
+            1111111111111111111Lorem ipsum dolor sit, amet consectetur
+            adipisicing elit. Fugiat perspiciatis, debitis a perferendis error
+            quaerat, nulla exercitationem minus, quam libero in ab obcaecati
+            praesentium hic ipsum possimus voluptate modi eius?
           </p>
+          <hr>
         </div>
       </div>
     </section>
@@ -34,64 +39,82 @@
       <div class="row">
         <div class="col s12 m4 l3">
           <div class="input-field col s12">
-            <select multiple>
+            <select multiple id="temperaments">
               <option value="" disabled selected>Dog Characteristics</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-              <option value="4">Option 4</option>
-              <option value="5">Option 5</option>
-              <option value="6">Option 6</option>
+              <option value="Intelligent">Intelligent</option>
+              <option value="Affectionate">Affectionate</option>
+              <option value="Alert">Alert</option>
+              <option value="Friendly">Friendly</option>
+              <option value="Loyal">Loyal</option>
+              <option value="Playful">Playful</option>
+              <option value="Gentle">Gentle</option>
+              <option value="Energetic">Energetic</option>
+              <option value="Active">Active</option>
+              <option value="Fearless">Fearless</option>
+              <option value="Protective">Protective</option>
+              <option value="Independent">Independent</option>
+              <option value="Lively">Lively</option>
+              <option value="Companionable">Companionable</option>
+              <option value="Confident">Confident</option>
+              <option value="Loving">Loving</option>
+              <option value="Obedient">Obedient</option>
+              <option value="Courageous">Courageous</option>
+              <option value="Calm">Calm</option>
+              <option value="Stubborn">Stubborn</option>
             </select>
-            <label>Materialize Multiple Select</label>
-          <button
-            class="btn waves-effect waves-light"
-            type="submit"
-            name="action"
-          >
-            Submit
-            <i class="material-icons right"></i>
-          </button>
+            <label for="temperaments">Choose 3 Temperaments.</label>
+            <button
+              class="btn waves-effect waves-light"
+              type="submit"
+              name="action"
+              id="find-breeds"
+            >
+              Submit
+              <i class="material-icons right"></i>
+            </button>
           </div>
           <div class="input-field col s12">
-            <select multiple>
+            <select id="breeds">
               <option value="" disabled selected>Select Breed</option>
               <option value="1">Option 1</option>
               <option value="2">Option 2</option>
               <option value="3">Option 3</option>
             </select>
-            <label>Materialize Multiple Select</label>
+            <label>Select Breed</label>
+            <button
+              class="btn waves-effect waves-light"
+              type="submit"
+              name="action"
+              id="show-breed"
+            >
+              Submit
+              <i class="material-icons right"></i>
+            </button>
           </div>
         </div>
-        <div class="col s12 m8 l9">
-          <p>
-            22222222222222222Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat
-            perspiciatis, debitis a perferendis error quaerat, nulla
-            exercitationem minus, quam libero in ab obcaecati praesentium hic
-            ipsum possimus voluptate modi eius?
-          </p>
+        <div class="col s12 m8 l9" id="display-breed"> <!-- # for id-->
         </div>
       </div>
     </section>
     <section class="container my-5">
       <div class="row">
         <div class="col s12 m4 l3">
-            <input type="text" id="zipcode" autofocus='true' class="form-input">
+          <input type="text" id="zipcode" autofocus="true" class="form-input" />
           <button
             class="btn waves-effect waves-light"
             type="submit"
             name="action"
           >
-            Submit
+            Search
             <i class="material-icons right"></i>
           </button>
         </div>
         <div class="col s12 m8 l9">
           <p>
-            33333333333333333Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat
-            perspiciatis, debitis a perferendis error quaerat, nulla
-            exercitationem minus, quam libero in ab obcaecati praesentium hic
-            ipsum possimus voluptate modi eius?
+            33333333333333333Lorem ipsum dolor sit, amet consectetur adipisicing
+            elit. Fugiat perspiciatis, debitis a perferendis error quaerat,
+            nulla exercitationem minus, quam libero in ab obcaecati praesentium
+            hic ipsum possimus voluptate modi eius?
           </p>
         </div>
       </div>
@@ -105,6 +128,6 @@
       </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="script.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
