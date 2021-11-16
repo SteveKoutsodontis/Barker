@@ -9,7 +9,8 @@ var saveData; // saving the API data from the original fetch call because API do
 
 // findBreedClickHandler is called when the button under the temperament list is called.
 function findBreedClickHandler(event) {
-	// make array of temperaments that were clicked
+	// make array of temperaments that were clicked'
+
 	var userTemps = [];
 	for (var option of tempsSelectedEl.options) {
 		if (option.selected) {
@@ -143,8 +144,9 @@ function findBreedsWithTemperaments(temperaments, data) {
 	var matchingBreeds = [];
 
 	// Look through first hundred and fifty breeds to see if any have all the temperaments.
-	for (index = 0; index < 150; index++) {
+	for (index = 0; index < 100; index++) {
 		breedMatches = matchTemperamentWithBreed(temperaments, data[index]);
+
 		if (breedMatches != null) {
 			//this breed matched the temperaments.  Add to list
 			matchingBreeds.push(breedMatches);
@@ -160,10 +162,12 @@ function matchUserTemps(temperaments) {
 
 	fetch(dogUrl)
 		.then(function(response) {
+			
 			if (response.ok) {
 				response.json().then(function(data) {
 					
 					//now that we have our list of breeds, go through the list and match the temperament(s) that the user gave us.  Return the list of breeds that contain those temperaments.
+					
 					matchingBreeds = findBreedsWithTemperaments(temperaments, data);
 					saveData = data;
 					
