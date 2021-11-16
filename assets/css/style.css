@@ -16,3 +16,7 @@ hr {
     color:rgb(44, 160, 144)
     ;background-color:rgb(44, 156, 147)
 }
+
+.hide {
+    display: none;
+}

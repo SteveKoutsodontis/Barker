@@ -172,16 +172,57 @@ function matchUserTemps(temperaments) {
           console.log(temperaments)
           //now that we have our list of breeds, go through the list and match the temperament(s) that the user gave us.  Return the list of breeds that contain those temperaments.
           matchingBreeds = findBreedsWithTemperaments(temperaments, data);
+
+          console.log(data)
           saveData = data;
+
+          //breed Populating portion!
+            for(i=0; i<data.length; i++){
+              //creating a new option element that will eventually be appended to the select element in the HTML
+              // var newOption = document.createElement("option");
+              //Assigning the value and text for the new element to match the breed that we found through the API
+              // newOption.setAttribute("value", data[i].name)
+              // newOption.textContent = data[i].name
+
+              //appending all options to the select HTML element
+              // document.getElementById("breeds").appendChild(newOption)
+
+              let selectArea = document.getElementById("breeds")
+              // console.log(selectArea);
+
+              selectArea.add(new Option(data[i].name, data[i].name))
+
+              var instance = M.FormSelect.init(document.querySelectorAll('select'))
+              // instance.getSelectedValues()
+            }
+
+            //AFTER EVERY BREED IS APPENDED, we reveal the select tool
+            document.getElementById("breedChoice").setAttribute("class", "input-field col s12")
+          //END OF PORTION
+
+
            // Fill out <div> with info
            var img = document.createElement('img');
            img.setAttribute('src', "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg");
            img.setAttribute('height', '300');
            img.setAttribute('width', '300');
+          //  element.setAttribute(value);
+          var dogNameEl = document.createElement("h6");
+          var dogWeightEl = document.createElement("h6");
+          var dogName = data[0].name
+          var dogWeight = data[0].weight.imperial;
+          dogNameEl.textContent = dogName
+          dogWeightEl.textContent = dogWeight + " Lbs"
+
+           console.log(data[0].name)
+           console.log(data[0].weight)
+           console.log(data[0].height)
+           
  
            // TODO: Add the image to the appropriate container
            breedDisplayEl.appendChild(img);
-
+          breedDisplayEl.appendChild(dogNameEl);
+          breedDisplayEl.appendChild(dogWeightEl);
           if (matchingBreeds == null) {
             // TODO display modal that says no matches
             console.log('matchingBreeds is null in MatchUsrTmps');
