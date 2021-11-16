@@ -1,0 +1,18 @@
+* {
+    font-family: didot;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+hr {
+    height:none;
+    height: 20px;
+    color:rgb(44, 160, 144)
+    ;background-color:rgb(44, 156, 147)
+}
