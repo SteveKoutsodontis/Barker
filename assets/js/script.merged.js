@@ -281,10 +281,6 @@ function matchUserTemps(temperaments) {
             selectArea.add(new Option(matchingBreeds[i], matchingBreeds[i]))
             var instance = M.FormSelect.init(document.querySelectorAll('select'))
           }
-
-                   //AFTER EVERY BREED IS APPENDED, we reveal the select tool
-                   document.getElementById("breedChoice").setAttribute("class", "input-field col s12")
-
           return matchingBreeds;
         });
       } else {

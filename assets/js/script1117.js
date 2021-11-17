@@ -187,77 +187,77 @@ function matchUserTemps(temperaments) {
           //now that we have our list of breeds, go through the list and match the temperament(s) that the user gave us.  Return the list of breeds that contain those temperaments.
           matchingBreeds = findBreedsWithTemperaments(temperaments, data);
 
-
+          console.log(data)
           saveData = data;
 
-          // //breed Populating portion!
-          //   for(i=0; i<data.length; i++){
-          //     //creating a new option element that will eventually be appended to the select element in the HTML
-          //     // var newOption = document.createElement("option");
-          //     //Assigning the value and text for the new element to match the breed that we found through the API
-          //     // newOption.setAttribute("value", data[i].name)
-          //     // newOption.textContent = data[i].name
+          //breed Populating portion!
+            for(i=0; i<data.length; i++){
+              //creating a new option element that will eventually be appended to the select element in the HTML
+              // var newOption = document.createElement("option");
+              //Assigning the value and text for the new element to match the breed that we found through the API
+              // newOption.setAttribute("value", data[i].name)
+              // newOption.textContent = data[i].name
 
-          //     //appending all options to the select HTML element
-          //     // document.getElementById("breeds").appendChild(newOption)
+              //appending all options to the select HTML element
+              // document.getElementById("breeds").appendChild(newOption)
 
-          //     let selectArea = document.getElementById("breeds")
-          //     // console.log(selectArea);
+              let selectArea = document.getElementById("breeds")
+              // console.log(selectArea);
 
-          //     selectArea.add(new Option(data[i].name, data[i].name))
+              selectArea.add(new Option(data[i].name, data[i].name))
 
-          //     var instance = M.FormSelect.init(document.querySelectorAll('select'))
-          //     // instance.getSelectedValues()
-          //   }
+              var instance = M.FormSelect.init(document.querySelectorAll('select'))
+              // instance.getSelectedValues()
+            }
 
-          //   //AFTER EVERY BREED IS APPENDED, we reveal the select tool
-          //   document.getElementById("breedChoice").setAttribute("class", "input-field col s12")
-          // //END OF PORTION
+            //AFTER EVERY BREED IS APPENDED, we reveal the select tool
+            document.getElementById("breedChoice").setAttribute("class", "input-field col s12")
+          //END OF PORTION
 
 
-          //  // Fill out <div> with info
-          //  var img = document.createElement('img');
-          //  img.setAttribute('src', "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg");
-          //  img.setAttribute('height', '300');
-          //  img.setAttribute('width', '300');
-          // //  element.setAttribute(value);
-          // var dogNameEl = document.createElement("h6");
-          // var dogWeightEl = document.createElement("h6");
-          // var dogHeightEl = document.createElement("h6");
-          // var dogBred_ForEl = document.createElement("h6");
-          // var dogBreed_GroupEl = document.createElement("h6");
-          // var dogLife_SpanEl = document.createElement("h6");
-          // var dogTemperamentEl = document.createElement("h6");
-          // var dogOriginEl = document.createElement("h6");
+           // Fill out <div> with info
+           var img = document.createElement('img');
+           img.setAttribute('src', "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg");
+           img.setAttribute('height', '300');
+           img.setAttribute('width', '300');
+          //  element.setAttribute(value);
+          var dogNameEl = document.createElement("h6");
+          var dogWeightEl = document.createElement("h6");
+          var dogHeightEl = document.createElement("h6");
+          var dogBred_ForEl = document.createElement("h6");
+          var dogBreed_GroupEl = document.createElement("h6");
+          var dogLife_SpanEl = document.createElement("h6");
+          var dogTemperamentEl = document.createElement("h6");
+          var dogOriginEl = document.createElement("h6");
 
-          // var dogName = data[0].name
-          // var dogWeight = data[0].weight.imperial;
-          // var dogHeight = data[0].height.imperial;
-          // var dogBred_For = data[0].bred_for;
-          // var dogBreed_Group = data[0].breed_group;
-          // var dogLife_Span = data[0].life_span;
-          // var dogTemperament = data[0].temperament;
-          // var dogOrigin = data[0].origin;
+          var dogName = data[0].name
+          var dogWeight = data[0].weight.imperial;
+          var dogHeight = data[0].height.imperial;
+          var dogBred_For = data[0].bred_for;
+          var dogBreed_Group = data[0].breed_group;
+          var dogLife_Span = data[0].life_span;
+          var dogTemperament = data[0].temperament;
+          var dogOrigin = data[0].origin;
 
-          // dogNameEl.textContent = dogName
-          // dogWeightEl.textContent = "Weight: " + dogWeight + " lbs"
-          // dogHeightEl.textContent = "Height: " + dogHeight + " inches"
-          // dogBred_ForEl.textContent = "Bred for: " +  dogBred_For  
-          // dogBreed_GroupEl.textContent = "Breed Group: " + dogBreed_Group
-          // dogLife_SpanEl.textContent = "Life Span: " + dogLife_Span
-          // dogTemperamentEl.textContent = "Termperament: " + dogTemperament
-          // dogOriginEl.textContent = "Origin: " + dogOrigin
+          dogNameEl.textContent = dogName
+          dogWeightEl.textContent = "Weight: " + dogWeight + " lbs"
+          dogHeightEl.textContent = "Height: " + dogHeight + " inches"
+          dogBred_ForEl.textContent = "Bred for: " +  dogBred_For  
+          dogBreed_GroupEl.textContent = "Breed Group: " + dogBreed_Group
+          dogLife_SpanEl.textContent = "Life Span: " + dogLife_Span
+          dogTemperamentEl.textContent = "Termperament: " + dogTemperament
+          dogOriginEl.textContent = "Origin: " + dogOrigin
 
-          //  // TODO: Add the image to the appropriate container
-          //  breedDisplayEl.appendChild(img);
-          // breedDisplayEl.appendChild(dogNameEl);
-          // breedDisplayEl.appendChild(dogWeightEl);
-          // breedDisplayEl.appendChild(dogHeightEl);
-          // breedDisplayEl.appendChild(dogBred_ForEl);
-          // breedDisplayEl.appendChild(dogBreed_GroupEl);
-          // breedDisplayEl.appendChild(dogLife_SpanEl);
-          // breedDisplayEl.appendChild(dogTemperamentEl);
-          // breedDisplayEl.appendChild(dogOriginEl);
+           // TODO: Add the image to the appropriate container
+           breedDisplayEl.appendChild(img);
+          breedDisplayEl.appendChild(dogNameEl);
+          breedDisplayEl.appendChild(dogWeightEl);
+          breedDisplayEl.appendChild(dogHeightEl);
+          breedDisplayEl.appendChild(dogBred_ForEl);
+          breedDisplayEl.appendChild(dogBreed_GroupEl);
+          breedDisplayEl.appendChild(dogLife_SpanEl);
+          breedDisplayEl.appendChild(dogTemperamentEl);
+          breedDisplayEl.appendChild(dogOriginEl);
           
           
           if (matchingBreeds == null) {
@@ -273,18 +273,11 @@ function matchUserTemps(temperaments) {
           }
           // TODO: is there a Materialize way to do this?
           for (i = 0; i < matchingBreeds.length; i++) {
-            // let opt = document.createElement('option');
-            // opt.text = matchingBreeds[i];
-            // opt.value = matchingBreeds[i];
-            // selectedBreedEl.options.add(opt);
-            let selectArea = document.getElementById("breeds");
-            selectArea.add(new Option(matchingBreeds[i], matchingBreeds[i]))
-            var instance = M.FormSelect.init(document.querySelectorAll('select'))
+            let opt = document.createElement('option');
+            opt.text = matchingBreeds[i];
+            opt.value = matchingBreeds[i];
+            selectedBreedEl.options.add(opt);
           }
-
-                   //AFTER EVERY BREED IS APPENDED, we reveal the select tool
-                   document.getElementById("breedChoice").setAttribute("class", "input-field col s12")
-
           return matchingBreeds;
         });
       } else {
