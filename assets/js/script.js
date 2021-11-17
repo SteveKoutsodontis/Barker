@@ -16,6 +16,15 @@ document.addEventListener('DOMContentLoaded', function () {
   instance = M.Modal.init(elems)[0];
 
 });
+var modalText = document.querySelector('#modal-p');
+
+function displayModal(displayText) {
+  modalText.textContent = displayText;
+  instance.open();
+
+
+}
+
 var saveData; // saving the API data from the original fetch call because API doesn't return an image of the dog when asking for the breed info
 
 // findBreedClickHandler is called when the button under the temperament list is called.
@@ -23,7 +32,7 @@ function findBreedClickHandler(event) {
   // make array of temperaments that were clicked
   var userTemps = [];
 
-  // instance.open(); practice modal
+  // instance.open();// practice modal
   for (var option of tempsSelectedEl.options) {
     if (option.selected && option.value != '') {
       userTemps.push(option.value);
@@ -31,6 +40,7 @@ function findBreedClickHandler(event) {
   }
   // If by chance there were no traits selected, just return
   if (userTemps.length === 0) {
+    displayModal("Please select up to 3 traits");
     return;
   }
   matchingBreeds = matchUserTemps(userTemps);
@@ -56,7 +66,7 @@ function showBreedClickHandler(event) {
     if (hackBreed > 150) {
       hackBreed = 0;
     }
-    // alert("No breed submited. Try again");
+    // alert("No breed submitted. Try again");
   }
 }
 
