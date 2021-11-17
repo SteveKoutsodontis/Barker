@@ -44,7 +44,6 @@ function showBreedClickHandler(event) {
 		breedSelected = selectedBreedEl.options[selectedBreedEl.selectedIndex].text;
 		console.log('ShowBreedClickHandler: ' + breedSelected + ' ' + selectedBreedEl.selectedIndex);
   var breedSelected = [];
-debugger;
   breedSelected = selectedBreedEl.options[selectedBreedEl.selectedIndex].value;
   console.log('ShowBreedClickHandler: ' + breedSelected);
 
