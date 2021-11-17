@@ -22,7 +22,7 @@ function findBreedClickHandler(event) {
 	// make array of temperaments that were clicked
 	var userTemps = [];
 
-  instance.open();
+  // instance.open(); practice modal
 	for (var option of tempsSelectedEl.options) {
 		if (option.selected && option.value != '') {
 			userTemps.push(option.value);
@@ -43,9 +43,10 @@ function showBreedClickHandler(event) {
 	if (selectedBreedEl.selectedIndex >= 0) {
 		breedSelected = selectedBreedEl.options[selectedBreedEl.selectedIndex].text;
 		console.log('ShowBreedClickHandler: ' + breedSelected + ' ' + selectedBreedEl.selectedIndex);
+    
   var breedSelected = [];
   breedSelected = selectedBreedEl.options[selectedBreedEl.selectedIndex].value;
-  console.log('ShowBreedClickHandler: ' + breedSelected);
+ 
 
 		getBreedInfo(breedSelected);
 	}
@@ -290,8 +291,7 @@ function matchUserTemps(temperaments) {
 
 findBreedsBtn.addEventListener('click', findBreedClickHandler);
 showBreedBtn.addEventListener('click', showBreedClickHandler);
-$(document).ready(function(){
-  $('.modal').modal();
-});
+// $(document).ready(function(){
+//   $('.modal').modal();
+// });
         
-console.log(M);
