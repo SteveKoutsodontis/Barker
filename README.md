@@ -1,2 +1,0 @@
-# Barker
-Dogs are awesome
