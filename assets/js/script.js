@@ -47,17 +47,17 @@ function fetchBreedInfo(breedSelected, curBreedInfo) {
           // remove old info from display-breed div
 
           while (breedDisplayEl.firstChild) {
-            el.removeChild(el.firstChild);
+            breedDisplayEl.removeChild(breedDisplayEl.firstChild);
           }
           // Fill out <div> with info
-          var img = document.createElement('img');
-          img.setAttribute('src', curBreedInfo.image.url);
-          img.setAttribute('height', '300');
-          img.setAttribute('width', '300');
+          // var img = document.createElement('img');
+          // img.setAttribute('src', curBreedInfo.image.url);
+          // img.setAttribute('height', '300');
+          // img.setAttribute('width', '300');
 
-          // TODO: Add the image to the appropriate container
-          breedDisplayEl.appendChild(img);
-
+          // // TODO: Add the image to the appropriate container
+          // breedDisplayEl.appendChild(img);
+            displayBreedInfo(curBreedInfo);
 
 
 
@@ -70,6 +70,52 @@ function fetchBreedInfo(breedSelected, curBreedInfo) {
     .catch(function (error) {
       alert('Unable to connect to TheDogAPI');
     });
+}
+
+function displayBreedInfo(displayBreedData) {
+  // Fill out <div> with info
+  var img = document.createElement('img');
+  img.setAttribute('src', "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg");
+  img.setAttribute('height', '300');
+  img.setAttribute('width', '300');
+  //  element.setAttribute(value);
+    var dogNameEl = document.createElement("h6");
+    var dogWeightEl = document.createElement("h6");
+    var dogHeightEl = document.createElement("h6");
+    var dogBred_ForEl = document.createElement("h6");
+    var dogBreed_GroupEl = document.createElement("h6");
+    var dogLife_SpanEl = document.createElement("h6");
+    var dogTemperamentEl = document.createElement("h6");
+    var dogOriginEl = document.createElement("h6");
+
+    var dogName = displayBreedData.name
+    var dogWeight = displayBreedData.weight.imperial;
+    var dogHeight = displayBreedData.height.imperial;
+    var dogBred_For = displayBreedData.bred_for;
+    var dogBreed_Group = displayBreedData.breed_group;
+    var dogLife_Span = displayBreedData.life_span;
+    var dogTemperament = displayBreedData.temperament;
+    var dogOrigin = displayBreedData.origin;
+
+    dogNameEl.textContent = dogName
+    dogWeightEl.textContent = "Weight: " + dogWeight + " lbs"
+    dogHeightEl.textContent = "Height: " + dogHeight + " inches"
+    dogBred_ForEl.textContent = "Bred for: " + dogBred_For
+    dogBreed_GroupEl.textContent = "Breed Group: " + dogBreed_Group
+    dogLife_SpanEl.textContent = "Life Span: " + dogLife_Span
+    dogTemperamentEl.textContent = "Termperament: " + dogTemperament
+    dogOriginEl.textContent = "Origin: " + dogOrigin
+
+    // TODO: Add the image to the appropriate container
+    breedDisplayEl.appendChild(img);
+    breedDisplayEl.appendChild(dogNameEl);
+    breedDisplayEl.appendChild(dogWeightEl);
+    breedDisplayEl.appendChild(dogHeightEl);
+    breedDisplayEl.appendChild(dogBred_ForEl);
+    breedDisplayEl.appendChild(dogBreed_GroupEl);
+    breedDisplayEl.appendChild(dogLife_SpanEl);
+    breedDisplayEl.appendChild(dogTemperamentEl);
+    breedDisplayEl.appendChild(dogOriginEl);
 }
 
 // fetches info from database about the selected dog Breed
@@ -205,48 +251,48 @@ function matchUserTemps(temperaments) {
 
 
           // Fill out <div> with info
-          var img = document.createElement('img');
-          img.setAttribute('src', "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg");
-          img.setAttribute('height', '300');
-          img.setAttribute('width', '300');
-          //  element.setAttribute(value);
-            var dogNameEl = document.createElement("h6");
-            var dogWeightEl = document.createElement("h6");
-            var dogHeightEl = document.createElement("h6");
-            var dogBred_ForEl = document.createElement("h6");
-            var dogBreed_GroupEl = document.createElement("h6");
-            var dogLife_SpanEl = document.createElement("h6");
-            var dogTemperamentEl = document.createElement("h6");
-            var dogOriginEl = document.createElement("h6");
+          // var img = document.createElement('img');
+          // img.setAttribute('src', "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg");
+          // img.setAttribute('height', '300');
+          // img.setAttribute('width', '300');
+          // //  element.setAttribute(value);
+          //   var dogNameEl = document.createElement("h6");
+          //   var dogWeightEl = document.createElement("h6");
+          //   var dogHeightEl = document.createElement("h6");
+          //   var dogBred_ForEl = document.createElement("h6");
+          //   var dogBreed_GroupEl = document.createElement("h6");
+          //   var dogLife_SpanEl = document.createElement("h6");
+          //   var dogTemperamentEl = document.createElement("h6");
+          //   var dogOriginEl = document.createElement("h6");
 
-            var dogName = data[0].name
-            var dogWeight = data[0].weight.imperial;
-            var dogHeight = data[0].height.imperial;
-            var dogBred_For = data[0].bred_for;
-            var dogBreed_Group = data[0].breed_group;
-            var dogLife_Span = data[0].life_span;
-            var dogTemperament = data[0].temperament;
-            var dogOrigin = data[0].origin;
+          //   var dogName = data[0].name
+          //   var dogWeight = data[0].weight.imperial;
+          //   var dogHeight = data[0].height.imperial;
+          //   var dogBred_For = data[0].bred_for;
+          //   var dogBreed_Group = data[0].breed_group;
+          //   var dogLife_Span = data[0].life_span;
+          //   var dogTemperament = data[0].temperament;
+          //   var dogOrigin = data[0].origin;
 
-            dogNameEl.textContent = dogName
-            dogWeightEl.textContent = "Weight: " + dogWeight + " lbs"
-            dogHeightEl.textContent = "Height: " + dogHeight + " inches"
-            dogBred_ForEl.textContent = "Bred for: " + dogBred_For
-            dogBreed_GroupEl.textContent = "Breed Group: " + dogBreed_Group
-            dogLife_SpanEl.textContent = "Life Span: " + dogLife_Span
-            dogTemperamentEl.textContent = "Termperament: " + dogTemperament
-            dogOriginEl.textContent = "Origin: " + dogOrigin
+          //   dogNameEl.textContent = dogName
+          //   dogWeightEl.textContent = "Weight: " + dogWeight + " lbs"
+          //   dogHeightEl.textContent = "Height: " + dogHeight + " inches"
+          //   dogBred_ForEl.textContent = "Bred for: " + dogBred_For
+          //   dogBreed_GroupEl.textContent = "Breed Group: " + dogBreed_Group
+          //   dogLife_SpanEl.textContent = "Life Span: " + dogLife_Span
+          //   dogTemperamentEl.textContent = "Termperament: " + dogTemperament
+          //   dogOriginEl.textContent = "Origin: " + dogOrigin
 
-            // TODO: Add the image to the appropriate container
-            breedDisplayEl.appendChild(img);
-            breedDisplayEl.appendChild(dogNameEl);
-            breedDisplayEl.appendChild(dogWeightEl);
-            breedDisplayEl.appendChild(dogHeightEl);
-            breedDisplayEl.appendChild(dogBred_ForEl);
-            breedDisplayEl.appendChild(dogBreed_GroupEl);
-            breedDisplayEl.appendChild(dogLife_SpanEl);
-            breedDisplayEl.appendChild(dogTemperamentEl);
-            breedDisplayEl.appendChild(dogOriginEl);
+          //   // TODO: Add the image to the appropriate container
+          //   breedDisplayEl.appendChild(img);
+          //   breedDisplayEl.appendChild(dogNameEl);
+          //   breedDisplayEl.appendChild(dogWeightEl);
+          //   breedDisplayEl.appendChild(dogHeightEl);
+          //   breedDisplayEl.appendChild(dogBred_ForEl);
+          //   breedDisplayEl.appendChild(dogBreed_GroupEl);
+          //   breedDisplayEl.appendChild(dogLife_SpanEl);
+          //   breedDisplayEl.appendChild(dogTemperamentEl);
+          //   breedDisplayEl.appendChild(dogOriginEl);
           
           if (matchingBreeds == null) {
             // TODO display modal that says no matches
