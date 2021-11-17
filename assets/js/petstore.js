@@ -51,10 +51,12 @@ var getCoords = function (zipcode) {
 var showStore = function (store) {
     console.log(store);
     var storeName = store.City;
+    var storePhone= store.PhoneNumber;
     var storeEl = document.createElement('p');
     storeContainerEl.appendChild(storeEl);
-    storeEl.textContent = storeName;
+    storeEl.textContent = storeName+storePhone;
 console.log(storeName);
+
     // if (store.length === 0) {
     //     storeContainerEl.textContent = "No stores found.";
     //     return;
