@@ -14,7 +14,7 @@ var instance;
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('.modal');
   instance = M.Modal.init(elems)[0];
-  console.log(instance);
+
 });
 var saveData; // saving the API data from the original fetch call because API doesn't return an image of the dog when asking for the breed info
 
@@ -219,11 +219,9 @@ function findBreedsWithTemperaments(temperaments, data) {
   var matchingBreeds = [];
 
   // Look through first hundred and fifty breeds to see if any have all the temperaments.
-  for (index = 0; index < 15; index++) {
+  for (index = 0; index < data.length; index++) {
     breedMatches = matchTemperamentWithBreed(temperaments, data[index]);
-    console.log(temperaments + data[index].name + breedMatches);
     if (breedMatches != null) {
-      console.log(breedMatches)
       //this breed matched the temperaments.  Add to list
       matchingBreeds.push(breedMatches);
     }
@@ -240,7 +238,7 @@ function matchUserTemps(temperaments) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(temperaments)
+          
           //now that we have our list of breeds, go through the list and match the temperament(s) that the user gave us.  Return the list of breeds that contain those temperaments.
           matchingBreeds = findBreedsWithTemperaments(temperaments, data);
 

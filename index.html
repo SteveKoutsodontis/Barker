@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="./assets/images/favicon-32x32.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
   <link rel="stylesheet" href="./assets/css/style.css">
   <title>Barker</title>
@@ -25,19 +26,19 @@
         <h5>Application Instructions:</h5>
         <ol>
           <li>
-            For the first step, please select the type of dog characteristics
+            For the first step, please select up to 3 types of dog characteristics
             you would like in your dog!😎
           </li>
           <br />
           <li>
-            After you,ve chosen your dog characteristics, a list of dog breeds
-            will display in the next drop down list along with the picture.
+            After you've chosen your dog characteristics, a list of dog breeds
+            will display in the next drop down list.
             Please choose from the list that is displayed.🐶
           </li>
           <br />
           <li>
-            Next, you will enter in your zipcode and a map of pet stores
-            locations will display.📍
+            Next, you will enter in your zipcode and the closest pet store
+            location will display.📍
           </li>
         </ol>
         <hr />
@@ -83,8 +84,7 @@
           <select id="breeds">
             <option value="" disabled selected>Select Breed</option>
             <option value="1"></option>
-            <!-- <option value="2">Option 2</option>
-              <option value="3">Option 3</option> -->
+
           </select>
           <label>Select Breed</label>
           <button class="btn waves-effect waves-light" type="submit" name="action" id="show-breed">
@@ -112,7 +112,7 @@
       </div>
 
       <div class="col s12 m8 l9">
-        <h5>Closest petsmart locations:</h5>
+        <h5>Closest PetSmart locations: (please be patient)</h5>
       </div>
       <div class="col s12 m8 l9" id="store-container">
         <p>Area for Petstore information.</p>
