@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/style.css">
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Barker</title>
   </head>
   <body>
@@ -24,17 +24,14 @@
       <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-xl-9">
           <h5>Application Instructions:</h5>
-          <hr>
           <p>
-            1111111111111111111Lorem ipsum dolor sit, amet consectetur
-            adipisicing elit. Fugiat perspiciatis, debitis a perferendis error
-            quaerat, nulla exercitationem minus, quam libero in ab obcaecati
-            praesentium hic ipsum possimus voluptate modi eius?
+            Application instructions for Users.
           </p>
           <hr>
         </div>
       </div>
     </section>
+    <div id="class"></div>
     <section class="container my-5">
       <div class="row">
         <div class="col s12 m4 l3">
@@ -73,12 +70,12 @@
               <i class="material-icons right"></i>
             </button>
           </div>
-          <div class="input-field col s12">
-            <select id="breeds">
+          <div id="breedChoice" class="input-field col s12 hide" >
+            <select id="breeds" >
               <option value="" disabled selected>Select Breed</option>
               <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+              <!-- <option value="2">Option 2</option>
+              <option value="3">Option 3</option> -->
             </select>
             <label>Select Breed</label>
             <button
@@ -90,9 +87,10 @@
               Submit
               <i class="material-icons right"></i>
             </button>
-          </div>
+            </div>
         </div>
         <div class="col s12 m8 l9" id="display-breed"> <!-- # for id-->
+          
         </div>
       </div>
     </section>
@@ -111,10 +109,7 @@
         </div>
         <div class="col s12 m8 l9" id= "store-container">
           <p>
-            33333333333333333Lorem ipsum dolor sit, amet consectetur adipisicing
-            elit. Fugiat perspiciatis, debitis a perferendis error quaerat,
-            nulla exercitationem minus, quam libero in ab obcaecati praesentium
-            hic ipsum possimus voluptate modi eius?
+            Area for Petstore information.
           </p>
         </div>
       </div>
