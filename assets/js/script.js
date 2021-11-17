@@ -43,6 +43,10 @@ function showBreedClickHandler(event) {
 	if (selectedBreedEl.selectedIndex >= 0) {
 		breedSelected = selectedBreedEl.options[selectedBreedEl.selectedIndex].text;
 		console.log('ShowBreedClickHandler: ' + breedSelected + ' ' + selectedBreedEl.selectedIndex);
+  var breedSelected = [];
+debugger;
+  breedSelected = selectedBreedEl.options[selectedBreedEl.selectedIndex].value;
+  console.log('ShowBreedClickHandler: ' + breedSelected);
 
 		getBreedInfo(breedSelected);
 	}
@@ -173,56 +177,116 @@ function findBreedsWithTemperaments(temperaments, data) {
 
 // Given an array of temperaments, requests list of breeds from the API and then matches the temperaments to populate the breeds list
 function matchUserTemps(temperaments) {
-	var dogUrl = 'https://api.thedogapi.com/v1/breeds?attach_breed=0?da345f76-e541-4a86-97b1-75573d24c717';
+  var dogUrl = 'https://api.thedogapi.com/v1/breeds?attach_breed=0?da345f76-e541-4a86-97b1-75573d24c717';
 
-	fetch(dogUrl)
-		.then(function(response) {
-			if (response.ok) {
-				response.json().then(function(data) {
-					console.log(temperaments);
-					//now that we have our list of breeds, go through the list and match the temperament(s) that the user gave us.  Return the list of breeds that contain those temperaments.
-					matchingBreeds = findBreedsWithTemperaments(temperaments, data);
-					console.log('matchingBreeds' + matchingBreeds);
-					saveData = data;
+  fetch(dogUrl)
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          console.log(temperaments)
+          //now that we have our list of breeds, go through the list and match the temperament(s) that the user gave us.  Return the list of breeds that contain those temperaments.
+          matchingBreeds = findBreedsWithTemperaments(temperaments, data);
 
-					// Fill out <div> with info
-					var img = document.createElement('img');
-					img.setAttribute('src', 'https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg');
-					img.setAttribute('height', '300');
-					img.setAttribute('width', '300');
+          console.log(data)
+          saveData = data;
 
-					// TODO: Add the image to the appropriate container
-					breedDisplayEl.appendChild(img);
+          //breed Populating portion!
+            for(i=0; i<data.length; i++){
+              //creating a new option element that will eventually be appended to the select element in the HTML
+              // var newOption = document.createElement("option");
+              //Assigning the value and text for the new element to match the breed that we found through the API
+              // newOption.setAttribute("value", data[i].name)
+              // newOption.textContent = data[i].name
 
-					if (matchingBreeds == null) {
-						// TODO display modal that says no matches
-						console.log('matchingBreeds is null in MatchUsrTmps');
-						return null;
-					}
+              //appending all options to the select HTML element
+              // document.getElementById("breeds").appendChild(newOption)
 
-					// remove any previous options from the breedlist first
+              let selectArea = document.getElementById("breeds")
+              // console.log(selectArea);
 
-					while (selectedBreedEl.options.length > 0) {
-						selectedBreedEl.remove(0);
-					}
-					// TODO: is there a Materialize way to do this?
-					for (i = 0; i < matchingBreeds.length; i++) {
-						let opt = document.createElement('option');
-						opt.textContent = matchingBreeds[i];
-						opt.setAttribute('value', matchingBreeds[i]);
-						selectedBreedEl.append(opt);
-						console.log(selectedBreedEl.options[i]);
-					}
-					console.log('selectedBreedEl.options ' + JSON.stringify(selectedBreedEl.options));
-					return matchingBreeds;
-				});
-			} else {
-				alert('Error: ' + response.statusText);
-			}
-		})
-		.catch(function(error) {
-			alert('Unable to connect to TheDogAPI');
-		});
+              selectArea.add(new Option(data[i].name, data[i].name))
+
+              var instance = M.FormSelect.init(document.querySelectorAll('select'))
+              // instance.getSelectedValues()
+            }
+
+            //AFTER EVERY BREED IS APPENDED, we reveal the select tool
+            document.getElementById("breedChoice").setAttribute("class", "input-field col s12")
+          //END OF PORTION
+
+
+           // Fill out <div> with info
+           var img = document.createElement('img');
+           img.setAttribute('src', "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg");
+           img.setAttribute('height', '300');
+           img.setAttribute('width', '300');
+          //  element.setAttribute(value);
+          var dogNameEl = document.createElement("h6");
+          var dogWeightEl = document.createElement("h6");
+          var dogHeightEl = document.createElement("h6");
+          var dogBred_ForEl = document.createElement("h6");
+          var dogBreed_GroupEl = document.createElement("h6");
+          var dogLife_SpanEl = document.createElement("h6");
+          var dogTemperamentEl = document.createElement("h6");
+          var dogOriginEl = document.createElement("h6");
+
+          var dogName = data[0].name
+          var dogWeight = data[0].weight.imperial;
+          var dogHeight = data[0].height.imperial;
+          var dogBred_For = data[0].bred_for;
+          var dogBreed_Group = data[0].breed_group;
+          var dogLife_Span = data[0].life_span;
+          var dogTemperament = data[0].temperament;
+          var dogOrigin = data[0].origin;
+
+          dogNameEl.textContent = dogName
+          dogWeightEl.textContent = "Weight: " + dogWeight + " lbs"
+          dogHeightEl.textContent = "Height: " + dogHeight + " inches"
+          dogBred_ForEl.textContent = "Bred for: " +  dogBred_For  
+          dogBreed_GroupEl.textContent = "Breed Group: " + dogBreed_Group
+          dogLife_SpanEl.textContent = "Life Span: " + dogLife_Span
+          dogTemperamentEl.textContent = "Termperament: " + dogTemperament
+          dogOriginEl.textContent = "Origin: " + dogOrigin
+
+           // TODO: Add the image to the appropriate container
+           breedDisplayEl.appendChild(img);
+          breedDisplayEl.appendChild(dogNameEl);
+          breedDisplayEl.appendChild(dogWeightEl);
+          breedDisplayEl.appendChild(dogHeightEl);
+          breedDisplayEl.appendChild(dogBred_ForEl);
+          breedDisplayEl.appendChild(dogBreed_GroupEl);
+          breedDisplayEl.appendChild(dogLife_SpanEl);
+          breedDisplayEl.appendChild(dogTemperamentEl);
+          breedDisplayEl.appendChild(dogOriginEl);
+          
+          
+          if (matchingBreeds == null) {
+            // TODO display modal that says no matches
+            console.log('matchingBreeds is null in MatchUsrTmps');
+            return null;
+          }
+
+          // remove any previous options from the breedlist first
+
+          while (selectedBreedEl.options.length > 0) {
+            selectedBreedEl.remove(0);
+          }
+          // TODO: is there a Materialize way to do this?
+          for (i = 0; i < matchingBreeds.length; i++) {
+            let opt = document.createElement('option');
+            opt.text = matchingBreeds[i];
+            opt.value = matchingBreeds[i];
+            selectedBreedEl.options.add(opt);
+          }
+          return matchingBreeds;
+        });
+      } else {
+        alert('Error: ' + response.statusText);
+      }
+    })
+    .catch(function (error) {
+      alert('Unable to connect to TheDogAPI');
+    });
 }
 
 findBreedsBtn.addEventListener('click', findBreedClickHandler);
