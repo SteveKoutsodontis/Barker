@@ -115,7 +115,7 @@ function matchTemperamentWithBreed(userTemperaments, curBreed) {
 	var curTemp; // array of temperaments of current breed
 
 	curTemp = curBreed.temperament;
-
+// console.log("mcTempWBr: curBreed.temp "+ curTemp + "usrTmp " + userTemperaments);
 	// grab string list of temperaments and put them in an array
 	if (!curTemp) {
 		// no temperaments listed for this breed
@@ -142,9 +142,9 @@ function matchTemperamentWithBreed(userTemperaments, curBreed) {
 function findBreedsWithTemperaments(temperaments, data) {
 	// go through all breeds and build a list of breeds that have matching temperaments.
 	var matchingBreeds = [];
-
+console.log("fndBWT Temps: " + temperaments+ "data[0] " + data[0]);
 	// Look through first hundred and fifty breeds to see if any have all the temperaments.
-	for (index = 0; index < 100; index++) {
+	for (index = 0; index < 25; index++) {
 		breedMatches = matchTemperamentWithBreed(temperaments, data[index]);
 
 		if (breedMatches != null) {
