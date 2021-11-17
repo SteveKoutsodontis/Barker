@@ -1,3 +1,4 @@
+console.log("script.js is running")
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('select');
   var options = document.querySelectorAll('select');
@@ -28,6 +29,7 @@ function findBreedClickHandler(event) {
 //showBreedClickHandler is called when the button under the selected Breed is called.
 function showBreedClickHandler(event) {
   var breedSelected = [];
+  console.log(selectedBreedEl.selectedIndex);
   breedSelected = selectedBreedEl.options[selectedBreedEl.selectedIndex].value;
   console.log('ShowBreedClickHandler: ' + breedSelected);
 

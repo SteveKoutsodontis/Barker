@@ -1,9 +1,9 @@
-console.log("katie.js is running")
+console.log("petstore.js is running")
 
 var userFormEl = document.querySelector('#user-form');
 var zipInputEl = document.querySelector('#zip-input');
 //box they enter the zipcode into
-var zipButtonEl = document.querySelector('#zip-button')
+var zipButtonEl = document.querySelector('#search')
 //button to search zipcode
 var storeContainerEl = document.querySelector('#store-container');
 //area the store will be displayed
@@ -53,9 +53,12 @@ var showStore = function (store) {
     var storeName = store.City;
     var storePhone= store.PhoneNumber;
     var storeEl = document.createElement('p');
+    var phoneEl = document.createElement('p')
     storeContainerEl.appendChild(storeEl);
-    storeEl.textContent = storeName+storePhone;
-console.log(storeName);
+    storeContainerEl.appendChild(phoneEl);
+    storeEl.textContent = storeName;
+    phoneEl.textContent = storePhone;
+
 
     // if (store.length === 0) {
     //     storeContainerEl.textContent = "No stores found.";
