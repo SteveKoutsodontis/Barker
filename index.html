@@ -44,7 +44,6 @@
         <br />
         <br />
       </div>
-    </div>
   </section>
   <div id="class"></div>
   <section class="container my-5">
@@ -52,7 +51,7 @@
       <div class="col s12 m4 l3">
         <div class="input-field col s12">
           <select multiple id="temperaments">
-            <option value="" disabled selected>Dog Characteristics</option>
+            <option value="" disabled selected hidden>Dog Characteristics</option>
             <option value="Intelligent">Intelligent</option>
             <option value="Affectionate">Affectionate</option>
             <option value="Alert">Alert</option>
@@ -83,8 +82,8 @@
         <div id="breedChoice" class="input-field col s12 hide">
           <select id="breeds">
             <option value="" disabled selected>Select Breed</option>
-            <!--             <option value="1">Option 1</option>
-               <option value="2">Option 2</option>
+            <option value="1"></option>
+            <!-- <option value="2">Option 2</option>
               <option value="3">Option 3</option> -->
           </select>
           <label>Select Breed</label>
@@ -113,13 +112,12 @@
       </div>
 
       <div class="col s12 m8 l9">
-        <h3>Closest petsmart locations</h3>
+        <h5>Closest petsmart locations:</h5>
       </div>
       <div class="col s12 m8 l9" id="store-container">
-        <p>
-          Area for Petstore information.
-        </p>
+        <p>Area for Petstore information.</p>
       </div>
+    </div>
     </div>
   </section>
 
@@ -141,14 +139,13 @@
         <hr />
         <h4>Footer</h4>
       </div>
-    </section>
-    <script
-    src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-    crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
- 
-    <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/petstore.js"></script>
-  </body>
+  </section>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/petstore.js"></script>
+</body>
+
 </html>
