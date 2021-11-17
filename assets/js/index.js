@@ -1,7 +1,7 @@
 var zipcodes = [];
 
 var zipFormEl=document.querySelector("#zip-search-form");
-var zipCodeInputEl=document.querySelector("#zipcode");
+var zipCodeInputEl=document.querySelector("#zip-input");
 var pastSearchButtonEl = document.querySelector("#past-search-buttons");
 
 var formSearch = function(event){
