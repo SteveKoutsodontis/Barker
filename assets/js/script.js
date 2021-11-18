@@ -115,14 +115,14 @@ function displayBreedInfo(displayBreedData) {
   img.setAttribute('height', '300');
   img.setAttribute('width', '300');
   //  element.setAttribute(value);
-  var dogNameEl = document.createElement("h6");
-  var dogWeightEl = document.createElement("h6");
-  var dogHeightEl = document.createElement("h6");
-  var dogBred_ForEl = document.createElement("h6");
-  var dogBreed_GroupEl = document.createElement("h6");
-  var dogLife_SpanEl = document.createElement("h6");
-  var dogTemperamentEl = document.createElement("h6");
-  var dogOriginEl = document.createElement("h6");
+  var dogNameEl = document.createElement("h5");
+  var dogWeightEl = document.createElement("h5");
+  var dogHeightEl = document.createElement("h5");
+  var dogBred_ForEl = document.createElement("h5");
+  var dogBreed_GroupEl = document.createElement("h5");
+  var dogLife_SpanEl = document.createElement("h5");
+  var dogTemperamentEl = document.createElement("h5");
+  var dogOriginEl = document.createElement("h5");
 
   var dogName = displayBreedData.name
   var dogWeight = displayBreedData.weight.imperial;
@@ -324,7 +324,6 @@ function matchUserTemps(temperaments) {
           // breedDisplayEl.appendChild(dogTemperamentEl);
           // breedDisplayEl.appendChild(dogOriginEl);
           
-          debugger;
           if (matchingBreeds.length === 0) {
             //  display modal that says no matches
             displayModal("Sorry, there aren't any breeds with all of those characteristics.  Please try again");

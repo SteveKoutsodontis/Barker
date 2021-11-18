@@ -1,7 +1,18 @@
 * {
     font-family: didot;
+    background-color: #EEE0C3;
+    color: #8B4636;
 }
 
+img {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+  }
+
+li {
+    font-size: 1.5rem;
+}
 h1 {
     text-align: center;
 }
@@ -25,7 +36,7 @@ hr.thin {
 hr {
     height:none;
     height: 20px;
-    ;background-color:rgb(119, 54, 54)
+    background-color:#BD8750;
 }
 
 .hide {
