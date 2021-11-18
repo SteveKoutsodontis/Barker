@@ -323,8 +323,7 @@ function matchUserTemps(temperaments) {
           // breedDisplayEl.appendChild(dogLife_SpanEl);
           // breedDisplayEl.appendChild(dogTemperamentEl);
           // breedDisplayEl.appendChild(dogOriginEl);
-          
-          debugger;
+
           if (matchingBreeds.length === 0) {
             //  display modal that says no matches
             displayModal("Sorry, there aren't any breeds with all of those characteristics.  Please try again");
