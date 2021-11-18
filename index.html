@@ -5,8 +5,9 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="./assets/images/favicon-32x32.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/style.css">
   <title>Barker</title>
 </head>
 
@@ -25,26 +26,25 @@
         <h5>Application Instructions:</h5>
         <ol>
           <li>
-            For the first step, please select the type of dog characteristics
+            For the first step, please select up to 3 types of dog characteristics
             you would like in your dog!😎
           </li>
           <br />
           <li>
-            After you,ve chosen your dog characteristics, a list of dog breeds
-            will display in the next drop down list along with the picture.
+            After you've chosen your dog characteristics, a list of dog breeds
+            will display in the next drop down list.
             Please choose from the list that is displayed.🐶
           </li>
           <br />
           <li>
-            Next, you will enter in your zipcode and a map of pet stores
-            locations will display.📍
+            Next, you will enter in your zipcode and the closest pet store
+            location will display.📍
           </li>
         </ol>
         <hr />
         <br />
         <br />
       </div>
-    </div>
   </section>
   <div id="class"></div>
   <section class="container my-5">
@@ -52,7 +52,7 @@
       <div class="col s12 m4 l3">
         <div class="input-field col s12">
           <select multiple id="temperaments">
-            <option value="" disabled selected>Dog Characteristics</option>
+            <option value="" disabled selected hidden>Dog Characteristics</option>
             <option value="Intelligent">Intelligent</option>
             <option value="Affectionate">Affectionate</option>
             <option value="Alert">Alert</option>
@@ -83,9 +83,8 @@
         <div id="breedChoice" class="input-field col s12 hide">
           <select id="breeds">
             <option value="" disabled selected>Select Breed</option>
-            <option value="1">Option 1</option>
-            <!-- <option value="2">Option 2</option>
-              <option value="3">Option 3</option> -->
+            <option value="1"></option>
+
           </select>
           <label>Select Breed</label>
           <button class="btn waves-effect waves-light" type="submit" name="action" id="show-breed">
@@ -104,7 +103,7 @@
       <div class="col s12 m4 l3 search-box">
         <form class="border" id="zip-search-form">
           <input type="text" id="zip-input" placeholder="Enter zipcode" autofocus="true" class="form-input" />
-          <button class="btn waves-effect waves-light" type="click" name="action" id="search">
+          <button class="btn waves-effect waves-light" type="submit" name="action" id="zip-button">
             Search
             <i class="material-icons right"></i>
           </button>
@@ -113,11 +112,12 @@
       </div>
 
       <div class="col s12 m8 l9">
-        <h3>Closest petsmart locations</h3>
+        <h5>Closest PetSmart locations: (please be patient)</h5>
       </div>
       <div class="col s12 m8 l9" id="store-container">
         <p>Area for Petstore information.</p>
       </div>
+    </div>
     </div>
   </section>
 
@@ -125,11 +125,11 @@
   <!-- Modal Structure -->
   <div id="modal1" class="modal">
     <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+      <h4>Note!</h4>
+      <p id = "modal-p">A bunch of text</p>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
   </div>
 
@@ -139,7 +139,6 @@
         <hr />
         <h4>Footer</h4>
       </div>
-    </div>
   </section>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
