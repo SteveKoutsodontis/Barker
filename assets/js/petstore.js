@@ -24,32 +24,48 @@ var getCoords = function (zipcode) {
 				console.log(response);
 				response.json().then(function (data) {
 					console.log(data);
-					console.log(data.results[0].geometry.location.lat);
-					console.log(data.results[0].geometry.location.lng);
-					findStore(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
+					if (data.results.length !== 0) {
+						console.log(data.results[0].geometry.location.lat);
+						console.log(data.results[0].geometry.location.lng);
+						findStore(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
+					}
+					else {
+						displayModal("Unable to locate Zipcode.");
+						storeContainerEl.textContent = "";
+					}
 				});
 			} else {
+
+				displayModal('Error: ' + response.statusText);
 			}
 		})
-		// .catch(function (error) { });
-};
-
+		.catch(function (error) {
+			displayModal('Unable to locate Zipcode.');
+		});
+}
 var showStore = function (store) {
 	console.log(store);
-	storeContainerEl.textContent= "";
+	storeContainerEl.textContent = "";
 	var storeName = store.Name;
 	var storePhone = store.PhoneNumber;
-	var storeStreet= store.StreetLine1;
+	var storeStreet = store.StreetLine1;
 	var streetEl = document.createElement('p');
 	var storeEl = document.createElement('p');
-	var phoneEl = document.createElement('p');
+	var phoneEl = document.createElement('a');
+	var phoneStr = "tel:" + storePhone;
+	phoneEl.setAttribute('href', phoneStr);
+	phoneEl.setAttribute('class', "phone-link")
+	// dogNameEl.innerHTML = `<span class = "bold">Breed Name: </span> ${dogName}`
+
 	storeContainerEl.appendChild(streetEl);
 	storeContainerEl.appendChild(storeEl);
 	storeContainerEl.appendChild(phoneEl);
+
 	streetEl.textContent = storeStreet;
 	storeEl.textContent = storeName;
 	phoneEl.textContent = storePhone;
-	console.log(storeStreet+storeName+storePhone);
+	console.log(storeStreet + storeName + storePhone);
+	
 };
 
 var findStore = function (lat, lng) {
@@ -77,7 +93,7 @@ function init() {
 	if (savedZips !== null) {
 		zipValue = savedZips;
 		console.log(savedZips)
-		for (var i = 0; i < savedZips.length; i++){
+		for (var i = 0; i < savedZips.length; i++) {
 			pastSearch(savedZips[i])
 			console.log(savedZips[i]);
 		}
@@ -93,6 +109,7 @@ var formSearch = function (event) {
 		getCoords(zip);
 		saveZip();
 		storeContainerEl.textContent = "";
+		storeContainerEl.textContent = "Loading..."
 		zipInputEl.value = "";
 	}
 	pastSearch(zip);
@@ -138,7 +155,9 @@ var searchAgain = function (event) {
 	console.log(event);
 	var targetZip = event.target.getAttribute('data-zipcodes');
 	console.log(targetZip);
+	storeContainerEl.textContent = "Loading..."
 	getCoords(targetZip);
+
 };
 zipFormEl.addEventListener('submit', formSearch);
 init();
