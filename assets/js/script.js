@@ -124,7 +124,15 @@ function displayBreedInfo(displayBreedData) {
   dogBred_ForEl.textContent = "Bred for: " + dogBred_For;
   dogBreed_GroupEl.textContent = "Breed Group: " + dogBreed_Group;
   dogLife_SpanEl.textContent = "Life Span: " + dogLife_Span;
-  dogTemperamentEl.textContent = "Termperament: " + dogTemperament;
+  dogTemperamentEl.textContent = "Temperament: " + dogTemperament;
+ 
+  dogNameEl.innerHTML = `<span class = "bold">Breed Name: </span> ${dogName}`
+  dogWeightEl.innerHTML = `<span class = "bold"> Weight: </span> ${dogWeight} lbs `
+  dogHeightEl.innerHTML = `<span class = "bold"> Height: </span> ${dogHeight} inches `
+  dogBred_ForEl.innerHTML = `<span class = "bold"> Bred for: </span> ${dogBred_For}`
+  dogBreed_GroupEl.innerHTML = `<span class = "bold"> Breed Group: </span> ${dogBreed_Group}`
+  dogLife_SpanEl.innerHTML = `<span class = "bold"> Life Span: </span> ${dogLife_Span}`
+  dogTemperamentEl.innerHTML = `<span class = "bold"> Temperament: </span> ${dogTemperament}`
 
   breedDisplayEl.appendChild(img);
   breedDisplayEl.appendChild(dogNameEl);
