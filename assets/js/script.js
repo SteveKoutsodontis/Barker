@@ -228,8 +228,8 @@ function findBreedsWithTemperaments(temperaments, data) {
   // go through all breeds and build a list of breeds that have matching temperaments.
   var matchingBreeds = [];
 
-  // Look through first hundred and fifty breeds to see if any have all the temperaments.
-  for (index = 0; index < data.length; index++) {
+  // Look through breeds to see if any have all the temperaments.
+  for (index = 0; index < 172; index++) {
     breedMatches = matchTemperamentWithBreed(temperaments, data[index]);
     if (breedMatches != null) {
       //this breed matched the temperaments.  Add to list
@@ -324,9 +324,11 @@ function matchUserTemps(temperaments) {
           // breedDisplayEl.appendChild(dogTemperamentEl);
           // breedDisplayEl.appendChild(dogOriginEl);
           
-          
-          if (matchingBreeds == null) {
-            // TODO display modal that says no matches
+          debugger;
+          if (matchingBreeds.length === 0) {
+            //  display modal that says no matches
+            displayModal("Sorry, there aren't any breeds with all of those characteristics.  Please try again");
+
             console.log('matchingBreeds is null in MatchUsrTmps');
             return null;
           }
@@ -336,7 +338,7 @@ function matchUserTemps(temperaments) {
           while (selectedBreedEl.options.length > 0) {
             selectedBreedEl.remove(0);
           }
-          // TODO: is there a Materialize way to do this?
+          // Populate the breeds dropdown
           for (i = 0; i < matchingBreeds.length; i++) {
             // let opt = document.createElement('option');
             // opt.text = matchingBreeds[i];
