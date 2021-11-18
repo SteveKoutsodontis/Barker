@@ -28,7 +28,10 @@ h2 {
 h4 , p {
     text-align: center;
 }
-
+p {
+    font-size: 1.5rem;
+    padding-right: 36%;
+}
 h6 {
     text-align: center;
 }
