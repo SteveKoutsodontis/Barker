@@ -18,6 +18,9 @@ h6 {
     text-align: center;
 }
 
+hr.thin {
+    height: 2px;
+}
 
 hr {
     height:none;
