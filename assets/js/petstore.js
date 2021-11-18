@@ -1,13 +1,18 @@
 console.log('petstore.js is running');
-
-var userFormEl = document.querySelector('#user-form');
+var zipcodes = [];
+//array for user zipcode inputs
 var zipInputEl = document.querySelector('#zip-input');
 //box they enter the zipcode into
 var zipButtonEl = document.querySelector('#search');
 //button to search zipcode
 var storeContainerEl = document.querySelector('#store-container');
 //area the store will be displayed
-//uses the zipcode results to get the lat/long
+var zipFormEl = document.querySelector('#zip-search-form');
+//form area on html where zip is entered
+var pastSearchButtonEl = document.querySelector('#past-search-buttons');
+//the buttons that populate with previous zip codes
+
+//getCoords uses the zipcode results to get the lat/long
 var getCoords = function (zipcode) {
 	var apiUrl =
 		'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCYO2vxRIUA51sE3nmmVld6f-n0OMzk80c&components=postal_code:' +
@@ -26,20 +31,25 @@ var getCoords = function (zipcode) {
 			} else {
 			}
 		})
-		.catch(function (error) { });
+		// .catch(function (error) { });
 };
 
 var showStore = function (store) {
 	console.log(store);
-	var storeName = store.City;
+	storeContainerEl.textContent= "";
+	var storeName = store.Name;
 	var storePhone = store.PhoneNumber;
+	var storeStreet= store.StreetLine1;
+	var streetEl = document.createElement('p');
 	var storeEl = document.createElement('p');
 	var phoneEl = document.createElement('p');
+	storeContainerEl.appendChild(streetEl);
 	storeContainerEl.appendChild(storeEl);
 	storeContainerEl.appendChild(phoneEl);
+	streetEl.textContent = storeStreet;
 	storeEl.textContent = storeName;
 	phoneEl.textContent = storePhone;
-	console.log(storeName);
+	console.log(storeStreet+storeName+storePhone);
 };
 
 var findStore = function (lat, lng) {
@@ -62,59 +72,53 @@ var findStore = function (lat, lng) {
 		}
 	});
 };
+function init() {
+	var savedZips = JSON.parse(localStorage.getItem("zipcodes"));
+	if (savedZips !== null) {
+		zipValue = savedZips;
+		console.log(savedZips)
+		for (var i = 0; i < savedZips.length; i++){
+			pastSearch(savedZips[i])
+			console.log(savedZips[i]);
+		}
 
-var zipcodes = [];
-
-var zipFormEl = document.querySelector('#zip-search-form');
-var zipCodeInputEl = document.querySelector('#zip-input');
-var pastSearchButtonEl = document.querySelector('#past-search-buttons');
-// var zipButtonEl = document.querySelector("#zip-button");
+	}
+}
 
 var formSearch = function (event) {
 	console.log("formSearch");
 	event.preventDefault();
-	var zip = zipCodeInputEl.value.trim();
+	var zip = zipInputEl.value.trim();
 	if (zip) {
-		zipcodes.unshift({ zip });
 		getCoords(zip);
+		saveZip();
 		storeContainerEl.textContent = "";
-		zipCodeInputEl.value = "";
+		zipInputEl.value = "";
 	}
-	// saveSearch();
 	pastSearch(zip);
 	console.log(zip)
 };
 
-// function init() {
-//   // Get stored todos from localStorage
-//   var storedTodos = JSON.parse(localStorage.getItem("todos"));
 
-//   // If todos were retrieved from localStorage, update the todos array to it
-//   if (storedTodos !== null) {
-//     todos = storedTodos;
-//   }
-
-//   // This is a helper function that will render todos to the DOM
-//   renderTodos();
-// }
-
-// function storeTodos() {
-//   // Stringify and set key in localStorage to todos array
-//   localStorage.setItem("todos", JSON.stringify(todos));
-// }
-
-function init() {
-	var saveSearch = JSON.parse(localStorage.getItem("zipcodes"));
-	if (saveSearch !== null) {
-		zip = saveSearch;
+function saveZip() {
+	console.log('saveZip');
+	// get initials
+	var zipValue = zipInputEl.value.trim();
+	// get localStorage item
+	if (zipValue) {
+		zipcodes = JSON.parse(localStorage.getItem('zipcodes'));
+		// console.log(scores);
+		if (!zipcodes) {
+			zipcodes = [];
+		};
+		zipcodes.unshift(zipValue);
+		console.log(zipValue)
+		localStorage.setItem('zipcodes', JSON.stringify(zipcodes));
 	}
-}
-function saveSearch() {
-	localStorage.setItem("zipcodes", JSON.stringify(zip));
-	console.log(localStorage);
+
+	return;
 }
 
-init();
 
 var pastSearch = function (pastSearch) {
 	console.log('past Search: ', pastSearch);
@@ -123,7 +127,6 @@ var pastSearch = function (pastSearch) {
 		pastSearchEl.textContent = pastSearch;
 		pastSearchEl.classList = 'border';
 		pastSearchEl.setAttribute('data-zipcodes', pastSearch);
-		//   pastSearchEl.setAttribute("type", "click");
 		pastSearchEl.addEventListener('click', searchAgain);
 		pastSearchButtonEl.prepend(pastSearchEl);
 	}
@@ -133,9 +136,9 @@ var pastSearch = function (pastSearch) {
 var searchAgain = function (event) {
 	event.preventDefault();
 	console.log(event);
-	console.log(event.target);
 	var targetZip = event.target.getAttribute('data-zipcodes');
 	console.log(targetZip);
 	getCoords(targetZip);
 };
 zipFormEl.addEventListener('submit', formSearch);
+init();
