@@ -2,8 +2,13 @@
     font-family: didot;
     background-color: #EEE0C3;
     color: #8B4636;
-    background-image: url("pawprints1.png")
+    
 }
+
+/* body {
+    background-image: url("./assets/images/pawprints1.png") ;
+    background-size: auto;
+} */
 .bold {
     font-size: 2rem;
     font-weight: bold;
