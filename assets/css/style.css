@@ -1,8 +1,14 @@
 * {
     font-family: didot;
     background-color: #EEE0C3;
-    color: #8B4636;
+    color:  #29302E;
+    
 }
+
+/* body {
+    background-image: url("./assets/images/pawprints1.png") ;
+    background-size: auto;
+} */
 .bold {
     font-size: 2rem;
     font-weight: bold;
@@ -13,6 +19,10 @@
     /* color: #000000; */
 /*     
 } */ 
+::placeholder {
+    color: #29302E;
+}
+
 
 img {
     width: 100%;
@@ -25,6 +35,7 @@ li {
 }
 button {
     margin: 10px;
+    background-color:  #B58677 !important;
 }
 
 h1 {

@@ -81,11 +81,11 @@ function fetchBreedInfo(breedSelected, curBreedInfo) {
           displayBreedInfo(curBreedInfo);
         });
       } else {
-        alert('Error: ' + response.statusText);
+        displayModal('Error: ' + response.statusText);
       }
     })
     .catch(function (error) {
-      alert('Unable to connect to TheDogAPI');
+      displayModal('Unable to connect to TheDogAPI');
     });
 }
 
@@ -275,11 +275,11 @@ function matchUserTemps(temperaments) {
           return matchingBreeds;
         });
       } else {
-        alert('Error: ' + response.statusText);
+       displayModal('Error: ' + response.statusText);
       }
     })
     .catch(function (error) {
-      alert('Unable to connect to TheDogAPI');
+     displayModal('Unable to connect to TheDogAPI');
     });
 }
 
