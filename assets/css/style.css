@@ -1,7 +1,7 @@
 * {
     font-family: didot;
     background-color: #EEE0C3;
-    color: #8B4636;
+    color:  #29302E;
     
 }
 
@@ -19,6 +19,10 @@
     /* color: #000000; */
 /*     
 } */ 
+::placeholder {
+    color: #29302E;
+}
+
 
 img {
     width: 100%;
@@ -31,7 +35,7 @@ li {
 }
 button {
     margin: 10px;
-    background-color: #8B4636 !important;
+    background-color:  #B58677 !important;
 }
 
 h1 {
