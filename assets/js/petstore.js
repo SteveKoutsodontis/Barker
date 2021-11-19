@@ -13,16 +13,16 @@ var pastSearchButtonEl = document.querySelector('#past-search-buttons');
 //the buttons that populate with previous zip codes
 
 //getCoords uses the zipcode results to get the lat/long
-var getCoords = function(zipcode) {
+var getCoords = function (zipcode) {
 	var apiUrl =
 		'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCYO2vxRIUA51sE3nmmVld6f-n0OMzk80c&components=postal_code:' +
 		zipcode;
 	console.log('apiUrl' + apiUrl);
 	fetch(apiUrl)
-		.then(function(response) {
+		.then(function (response) {
 			if (response.ok) {
 				console.log(response);
-				response.json().then(function(data) {
+				response.json().then(function (data) {
 					console.log(data);
 					if (data.results.length !== 0) {
 						console.log(data.results[0].geometry.location.lat);
@@ -37,11 +37,11 @@ var getCoords = function(zipcode) {
 				displayModal('Error: ' + response.statusText);
 			}
 		})
-		.catch(function(error) {
+		.catch(function (error) {
 			displayModal('Unable to locate Zipcode.');
 		});
 };
-var showStore = function(store) {
+var showStore = function (store) {
 	console.log(store);
 	storeContainerEl.textContent = '';
 	var storeName = store.Name;
@@ -50,13 +50,12 @@ var showStore = function(store) {
 	var streetEl = document.createElement('p');
 	var storeEl = document.createElement('p');
 	var phoneEl = document.createElement('a');
-	// var storePhone2 = storePhone.slice(0,3) + "-" + storePhone.slice(3,6) + "-"+ storePhone.slice(6,10);
-	var storePhone2 = [storePhone.slice(0,3), storePhone.slice(3,6), storePhone.slice(6,10)].join('-');
+	var storePhone2 = [storePhone.slice(0, 3), storePhone.slice(3, 6), storePhone.slice(6, 10)].join('-');
 	console.log(storePhone2);
 	var phoneStr = 'tel:' + storePhone2;
 	phoneEl.setAttribute('href', phoneStr);
 	phoneEl.setAttribute('class', 'phone-link');
-	// dogNameEl.innerHTML = `<span class = "bold">Breed Name: </span> ${dogName}`
+
 
 	storeContainerEl.appendChild(streetEl);
 	storeContainerEl.appendChild(storeEl);
@@ -68,8 +67,7 @@ var showStore = function(store) {
 	console.log(storeStreet + storeName + storePhone2);
 };
 
-var findStore = function(lat, lng) {
-	// var apiUrlPet = 'https://cors-anywhere.herokuapp.com/https://api.petsmart.com/v1/search/stores?model.latitude=39.8649819&model.longitude=-75.07512410000001';
+var findStore = function (lat, lng) {
 	var apiUrlPet =
 		'https://cors-anywhere.herokuapp.com/https://api.petsmart.com/v1/search/stores?model.latitude=' +
 		lat +
@@ -77,9 +75,10 @@ var findStore = function(lat, lng) {
 		lng;
 	console.log('apiUrlPet' + apiUrlPet);
 	console.log('findStore' + lat + lng);
-	fetch(apiUrlPet).then(function(response) {
+
+	fetch(apiUrlPet).then(function (response) {
 		if (response.ok) {
-			response.json().then(function(data) {
+			response.json().then(function (data) {
 				if (data.StoreSearchResults.length !== 0) {
 					console.log(data);
 					console.log(data.StoreSearchResults[0].Store.City);
@@ -87,12 +86,19 @@ var findStore = function(lat, lng) {
 					showStore(data.StoreSearchResults[0].Store);
 				}
 				else {
-					displayModal("Can't find any nearby stores.  Please try again.");
+					displayModal("Can't find any nearby stores.  Please try again.")
+					storeContainerEl.textContent = '';;
 				}
 			});
+		} else {
+			displayModal('Error: ' + response.statusText);
 		}
+	})
+	.catch(function (error) {
+		displayModal('Unable to locate any nearby stores.');
 	});
 };
+			
 function init() {
 	var savedZips = JSON.parse(localStorage.getItem('zipcodes'));
 	if (savedZips !== null) {
@@ -105,7 +111,7 @@ function init() {
 	}
 }
 
-var formSearch = function(event) {
+var formSearch = function (event) {
 	console.log('formSearch');
 	event.preventDefault();
 	var zip = zipInputEl.value.trim();
@@ -122,12 +128,10 @@ var formSearch = function(event) {
 
 function saveZip() {
 	console.log('saveZip');
-	// get initials
 	var zipValue = zipInputEl.value.trim();
 	// get localStorage item
 	if (zipValue) {
 		zipcodes = JSON.parse(localStorage.getItem('zipcodes'));
-		// console.log(scores);
 		if (!zipcodes) {
 			zipcodes = [];
 		}
@@ -139,10 +143,9 @@ function saveZip() {
 	return;
 }
 
-var pastSearch = function(pastSearch) {
+var pastSearch = function (pastSearch) {
 	console.log('past Search: ', pastSearch);
 	if (pastSearch != '') {
-		// zipcode is NOT empty
 		var pastSearchEl = document.createElement('button');
 		pastSearchEl.textContent = pastSearch;
 		pastSearchEl.classList = 'border';
@@ -152,8 +155,7 @@ var pastSearch = function(pastSearch) {
 	}
 };
 
-// pastSearch();
-var searchAgain = function(event) {
+var searchAgain = function (event) {
 	event.preventDefault();
 	console.log(event);
 	var targetZip = event.target.getAttribute('data-zipcodes');
